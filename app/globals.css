@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #960048;
+  --brand-light: #C2185B;
+  --brand-dark: #6A0033;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f5f0f3;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(150, 0, 72, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(150, 0, 72, 0.05) 0%, transparent 60%);
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+  .font-body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+}
+
+/* Card glass effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Option button hover */
+.option-btn {
+  transition: all 0.18s ease;
+}
+.option-btn:hover {
+  border-color: #960048;
+  background-color: rgba(150, 0, 72, 0.02);
+  transform: translateX(3px);
+}
+.option-btn:active {
+  transform: scale(0.985);
+}
+
+/* Animate stagger children */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeUp 0.4s ease-out forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.33s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress bar shimmer */
+.progress-bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  to { left: 100%; }
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  background: rgba(30, 27, 46, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 0, 72, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 0, 72, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
