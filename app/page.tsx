@@ -18,7 +18,7 @@ export default function Home() {
 
       {/* Footer */}
       <p className="mt-8 text-xs text-slate-400 font-medium text-center">
-        Questions? Contact the WCC Foundation Office at <a href="mailto:foundation@wcc.vccs.edu">foundation@wcc.vccs.edu</a>.
+        Questions? Contact the WCC Foundation Office at <a href="mailto:foundation@wcc.vccs.edu" class="no-underline hover:underline">foundation@wcc.vccs.edu</a>.
       </p>
     </main>
   );
